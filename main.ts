@@ -1,7 +1,9 @@
 import { mkdirSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 
-// The entry: written to /output/entry.txt.
-const ENTRY = "Thundersnow";
+// One word, first thought, written to /output/entry.txt.
+const ENTRY = "moonquake";
 
-mkdirSync("/output", { recursive: true });
-writeFileSync("/output/entry.txt", ENTRY, "utf8");
+const outDir = process.env.OUTPUT_DIR ?? "/output";
+mkdirSync(outDir, { recursive: true });
+writeFileSync(join(outDir, "entry.txt"), ENTRY, "utf8");
